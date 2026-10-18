@@ -54,12 +54,13 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation("androidx.compose.runtime:runtime-livedata:1.6.4")
+    implementation("androidx.navigation:navigation-compose:2.9.6")
 
-    val room_version = "2.6.1"
+    val room_version = "2.8.4" //modified the room version as it was throwing an unexpected jvm signature V, AI assisted change!
 
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    //both of these changes were AI assisted, since I was having build errors, see AI usage #1
 
 
 

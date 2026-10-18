@@ -2,26 +2,26 @@ package com.example.studentregistration
 
 
 import android.app.Application
-import androidx.room.Room.databaseBuilder
+import androidx.room.Room //fixed the import by the one used in Android Studio docs
 import com.example.studentregistration.db.StudentDatabase
-import com.example.studentregistration.Student
 
 
 class MainApplication : Application() {
 
     companion object {
-        lateinit var StudentDatabase: StudentDatabase // Creating our database object
+        //Shared db instance
+        lateinit var studentDatabase: StudentDatabase
     }
 
     override fun onCreate() {
         super.onCreate()
 
+        //create or open the db when the application runs
 
-
-        Companion.StudentDatabase = databaseBuilder(
+        studentDatabase = Room.databaseBuilder(
             applicationContext,
-            com.example.studentregistration.db.StudentDatabase::class.java,
-            com.example.studentregistration.db.StudentDatabase.NAME
+            StudentDatabase::class.java,
+            StudentDatabase.NAME
         ).build()
     }
 

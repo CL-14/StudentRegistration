@@ -8,27 +8,24 @@ import com.example.studentregistration.Student
 
 /*
 DAO Class is to form a bridge between the DataBase and the object
-classes used in the app.
+classes used in the app. Basically sets the operations I want to perform on the db
  */
 @Dao
 interface StudentDao {
-    /*
-    Annotations needed to specify the SQL queries type
-     */
-    @Query("SELECT * FROM Student ORDER BY id DESC")
-    fun getAllStudents() : LiveData<List<Student>>
 
+    //Insert one student into the database
     @Insert
-    fun addStudent(todo : Student)
+    suspend fun addStudent(student: Student): Long
 
-    @Query("Delete FROM Student where id = :id")
-    fun deleteStudent(id : Int)
-
-    @Query("SELECT * FROM Student where id = :id")
-    fun searchStudent(id : Int):LiveData<Student>
+    //Find one student using their ID
+    //Returns null if no student with the ID exists.
+    @Query("SELECT * FROM Student WHERE id = :id LIMIT 1")
+    suspend fun searchStudent(id: Int): Student?
 
 }
 
+
+//I keep the references, so I don't get lost with the imports since they are from bimalkaf for now, I am just adapting it
 /**
  * References :
  *
