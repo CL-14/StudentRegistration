@@ -38,17 +38,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         val StudentViewModel = ViewModelProvider(this)[StudentsViewModel::class.java]
-            setContent {
+        setContent {
 
-                StudentRegistrationTheme {
-                    Surface(
-                        //this modifier and the imports to use it was provided by AI, see AI usage #2
-                        modifier = Modifier.fillMaxSize().safeDrawingPadding(),
-                        color = MaterialTheme.colorScheme.background
-                    ) {
-                        StudentNavigation(StudentViewModel)
-                    }
+            StudentRegistrationTheme {
+                Surface(
+                    //this modifier and the imports to use it was provided by AI, see AI usage #2
+                    modifier = Modifier.fillMaxSize().safeDrawingPadding(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    StudentNavigation(StudentViewModel)
                 }
+            }
                 //Commented out since I might want to tweak it later to learn how previews work.
     //                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
     //                    Greeting(
